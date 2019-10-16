@@ -5,13 +5,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -28,11 +26,11 @@ public class EventLogsParserDaoImplTest {
     private EventLogsParserDaoImpl eventLogsParserDao;
 
     @Test
-    public void whenEventLogSavedThenInsertItInDatabase() {
+    public void whenEventLogSavedThenCallIsEventSlowAndInsertItInDatabase() {
         eventLogsParserDao.save(eventLog);
 
         verify(eventLog, times(1)).isEventSlow();
+        verify(jdbcTemplate, times(1)).update(anyString(), Mockito.<Object>any());
     }
-
 
 }

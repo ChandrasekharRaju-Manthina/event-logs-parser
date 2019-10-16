@@ -33,6 +33,11 @@ public class EventLogsParserMain {
         logger.info("Main method started");
 
         String filePath = "C:\\git\\event-logs-parser\\src\\main\\java\\com\\creditsuisse\\elp\\main\\event-logs.txt";
+        // take filePath from main method args if exist
+        if (args != null && args.length > 0) {
+            filePath = args[0];
+        }
+
         new EventLogsParserMain().run(filePath);
 
         logger.info("Main method finished");

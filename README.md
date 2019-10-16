@@ -1,1 +1,4 @@
-# event-logs-parser
+- `EventLogsParserMain.java` has main method to start the program. Please update `filePath` before running the program.
+- `EventLogsParserServiceImpl.java` has parsing logic.
+- `EventLogsParserDaoImpl.java` saves data
+- `EventLogsParserServiceMultiThreadingImpl.java` listed multi threading approach. it is NOT implemented!
